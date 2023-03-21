@@ -1,0 +1,8 @@
+200 Successful request
+201 Your activity/etc. was successfully created
+401 Unauthorized
+403 Forbidden; you cannot access
+404 Not found; the requested asset does not exist, or you are not authorized to see it
+429 Too Many Requests; you have exceeded rate limits
+500 Strava is having issues, please check
+

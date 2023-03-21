@@ -1,0 +1,28 @@
+SummaryActivity
+
+id				The unique identifier of the activity [long]
+distance 		The activity's distance, in meters [float]
+moving_time		The activity's moving time, in seconds [integer]
+elapsed_time 	The activity's elapsed time, in seconds [integer]
+sportType		An instance of SportType "Run" [SportType]
+start_date		The time at which the activity was started. [DateTime]
+start_latlng	An instance of LatLng
+end_latlng		An instance of LatLng
+kudos_count		The number of kudos given for this activity [integer]
+map				An instance of polylineMap
+max_speed		The activity's max speed, in meters per second [float]
+average_speed 	The activity's average speed, in meters per second
+
+more key definitions:
+LatLng			A collection of float objects. A pair of latitude/longitude coordinates, represented as an array of 2 floating point numbers.
+
+DetailedSegmentEffort
+average_cadence		The effort's average cadence [float]
+average_heartrate	The heart heart rate of the athlete during this effort [float]
+max_heartrate		The maximum heart rate of the athlete during this effort [float]
+
+SummaryAthelete
+firstname
+lastname
+profile				URL to a 124x124 pixel profile pic
+profile_medium 		URL to a 62x62 pixel profile pic
