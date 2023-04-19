@@ -1,20 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Login from "./Login";
 import Loading from "./Loading";
+import Athlete from "./Athlete";
 import {
   redirectStravaAuth,
   getActivities,
   getTokens,
   // getRefreshToken,
+  getLoggedInAthlete,
 } from "../utils/stravaAPI";
 import Activities from "./Activities";
 
 const Home = () => {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [stravaConnect, setStravaConnect] = useState(false);
   const [isGetTokens, setIsGetTokens] = useState(false);
   const [currentUrl, setcurrentUrl] = useState(window.location.href);
+  const [athleteData, setAthleteData] = useState([]);
+
+  useEffect(() => {
+    if (isGetTokens) {
+      setLoading(true);
+      async function fetchData() {
+        const response = await getLoggedInAthlete();
+        const { data } = response;
+        setAthleteData(data);
+        setLoading(false);
+      }
+      fetchData();
+    }
+  }, [isGetTokens]);
 
   useEffect(() => {
     if (isGetTokens) {
@@ -52,15 +67,11 @@ const Home = () => {
     return <Loading />;
   }
   return (
-    <article className="single-tour">
-      <div className="title">
-        <h2>Home Component</h2>
-        <div className="underline"></div>
-        <div>{stravaConnect ? <p>logged in</p> : <p>not logged in</p>}</div>
-      </div>
+    <div>
+      <Athlete athleteData={athleteData} />
       <Login connectStrava={connectStrava} />
       <Activities activities={activities} />
-    </article>
+    </div>
   );
 };
 

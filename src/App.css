@@ -224,3 +224,7 @@ main {
 .strava-logo {
   height: 3rem;
 }
+
+.profile-pic {
+  border-radius: 90%;
+}

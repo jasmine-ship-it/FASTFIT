@@ -11,9 +11,6 @@ export const redirectStravaAuth = async () => {
   );
 };
 
-// https://www.strava.com/oauth/authorize?client_id=103108&redirect_uri=http://localhost:3000&response_type=code&scope=activity:read_all
-
-// http://localhost:3000/?state=&code=45abe51795772c9fabb3e751162651d98c34f0a1&scope=read,activity:read_all
 export const getTokens = async () => {
   const updatedUrl = window.location.href;
   let authCode = updatedUrl.slice(35, 75);
@@ -73,11 +70,22 @@ export const getActivities = async (accessToken) => {
     const activitiesData = await axios.get(
       `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken2}`
     );
-    // const averageHeartrate = response.data[0].average_heartrate;
-    // console.log(activitiesData.data);
-    // console.log(type);
+
     return activitiesData;
   } catch (e) {
     console.log(`error:${e}`);
+  }
+};
+
+export const getLoggedInAthlete = async (accessToken) => {
+  let accessToken3 = localStorage.getItem("accessToken");
+  try {
+    const athleteData = await axios.get(
+      `https://www.strava.com/api/v3/athlete?access_token=${accessToken3}`
+    );
+
+    return athleteData;
+  } catch (e) {
+    console.log`Error:${e}`;
   }
 };
