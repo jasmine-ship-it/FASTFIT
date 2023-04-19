@@ -1,22 +1,36 @@
 import React from "react";
-import {
-  redirectStravaAuth,
-  getTokens,
-  getActivities,
-  getRefreshToken,
-} from "../api";
+// import { getRefreshToken } from "../utils/stravaAPI";
+import stravalogo from "../images/btn_strava_connectwith_orange.svg";
 
-const Login = () => {
+// import { redirectWithingsAuth } from "../utils/withingsAPI";
+
+const Login = ({ connectStrava }) => {
   return (
-    <div>
-      <h1>Login Component</h1>
-      <div>
-        <button onClick={redirectStravaAuth}>Connect with Strava</button>
-        <button onClick={getTokens}>Login</button>
-        <button onClick={getRefreshToken}>refresh token</button>
-        <button onClick={getActivities}>Show Activities</button>
+    <article className="single-tour">
+      <div className="title">
+        <h2>Login Component</h2>
+        <div className="underline"></div>
+        <div>
+          <button>
+            <img
+              className="strava-logo"
+              src={stravalogo}
+              onClick={() => connectStrava()}
+              alt="strava-logo"
+            />
+          </button>
+
+          {/* <div>
+            <button className="btn" onClick={getRefreshToken}>
+              refresh token
+            </button>
+          </div> */}
+        </div>
+        <div>
+          {/* <button onClick={redirectWithingsAuth}>Connect with Withings</button> */}
+        </div>
       </div>
-    </div>
+    </article>
   );
 };
 
