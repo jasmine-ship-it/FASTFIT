@@ -1,17 +1,35 @@
 import React from "react";
+import { useContext } from "react";
+import { ActivitiesContext } from "../contexts/activities.contexts";
 
-const Activities = ({ activities }) => {
+const Activities = () => {
+  const { activities } = useContext(ActivitiesContext);
+
   return (
     <div>
       <div className="title">
         <h2>Activities </h2>
         <div className="underline"></div>
+
         <div>
           {activities.map((activity, index) => {
             const distance = activity.distance;
-            const averageSpeed = activity.average_speed;
-            const maxSpeed = activity.max_speed;
             const elapsedTime = activity.elapsed_time;
+            const averageCadence = activity.average_cadence;
+
+            const averageSpeed = activity.average_speed;
+            const averageSpeed_min = (100 / 6 / averageSpeed).toFixed(0);
+            const averageSpeed_sec = (
+              ((100 / 6 / averageSpeed) % 1) *
+              60
+            ).toFixed(0);
+
+            const maxSpeed = activity.max_speed;
+            const maxSpeed_min = (100 / 6 / maxSpeed).toFixed(0);
+            const maxSpeed_sec = (((100 / 6 / maxSpeed) % 1) * 60).toFixed(0);
+
+            const averageHeartrate = activity.average_heartrate;
+            const maxHeartrate = activity.max_heartrate;
 
             return (
               <article key={index} className="single-tour">
@@ -19,17 +37,15 @@ const Activities = ({ activities }) => {
                 <div>
                   <p>{activity.name}</p>
                   <p>Date: {activity.start_date}</p>
-                  <p>Average Cadence: {activity.average_cadence}</p>
+                  <p>Average Cadence: {averageCadence}</p>
+                  <p>Average Heartrate: {averageHeartrate} bpm</p>
+                  <p>Max Heartrate: {maxHeartrate} bpm</p>
                   <p>
-                    Average Heartrate: {activity.average_heartrate.toFixed(0)}{" "}
-                    bpm{" "}
+                    Average Speed: {averageSpeed_min}:{averageSpeed_sec} min/km
                   </p>
-                  <p>Max Heartrate: {activity.max_heartrate.toFixed(0)} bpm</p>
                   <p>
-                    Average Speed: {((averageSpeed * 100) / 6).toFixed(1)}{" "}
-                    min/km
+                    Max Speed: {maxSpeed_min}:{maxSpeed_sec} min/km
                   </p>
-                  <p>Max Speed: {((maxSpeed * 100) / 6).toFixed(1)} min/km</p>
                   <p>Elapsed Time: {(elapsedTime / 60).toFixed(0)} mins</p>
                 </div>
               </article>
