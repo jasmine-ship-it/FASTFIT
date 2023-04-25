@@ -7,9 +7,8 @@ const Activities = () => {
 
   return (
     <div>
-      <div className="title">
+      <div>
         <h2>Activities </h2>
-        <div className="underline"></div>
 
         <div>
           {activities.map((activity, index) => {
@@ -32,7 +31,7 @@ const Activities = () => {
             const maxHeartrate = activity.max_heartrate;
 
             return (
-              <article key={index} className="single-tour">
+              <article key={index}>
                 <h3>Distance: {(distance / 1000).toFixed(1)}km</h3>
                 <div>
                   <p>{activity.name}</p>

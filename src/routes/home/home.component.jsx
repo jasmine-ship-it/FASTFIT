@@ -10,11 +10,12 @@ import { ActivitiesContext } from "./../../contexts/activities.contexts";
 import { TokensContext } from "./../../contexts/tokens.contexts";
 import { AthleteContext } from "../../contexts/athlete.contexts";
 
-import "./../../App.css";
 import { Routes, Route } from "react-router-dom";
 import Activities from "./../../pages/Activities";
 import Home from "./../../pages/Home";
-import Navigation from "./../navigation/navigation.component";
+// import Navigation from "./../navigation/navigation.component";
+import Settings from "./../../pages/Settings";
+import ResponsiveAppBar from "./../navigation/navbar.component";
 
 function App() {
   const { setActivities } = useContext(ActivitiesContext);
@@ -70,9 +71,10 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Navigation />}>
+        <Route exact path="/" element={<ResponsiveAppBar />}>
           <Route index element={<Home />} />
           <Route path="activities" element={<Activities />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </>
