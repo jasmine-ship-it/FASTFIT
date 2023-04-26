@@ -16,7 +16,6 @@ import Home from "./../../pages/Home";
 // import Navigation from "./../navigation/navigation.component";
 import Settings from "./../../pages/Settings";
 import ResponsiveAppBar from "./../navigation/navbar.component";
-import { appUrl } from "./../../utils/stravaAPI";
 
 function App() {
   const { setActivities } = useContext(ActivitiesContext);
