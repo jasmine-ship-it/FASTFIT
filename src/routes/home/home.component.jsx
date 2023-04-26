@@ -16,6 +16,7 @@ import Home from "./../../pages/Home";
 // import Navigation from "./../navigation/navigation.component";
 import Settings from "./../../pages/Settings";
 import ResponsiveAppBar from "./../navigation/navbar.component";
+import { appUrl } from "./../../utils/stravaAPI";
 
 function App() {
   const { setActivities } = useContext(ActivitiesContext);
@@ -23,7 +24,7 @@ function App() {
   const { setAthleteData } = useContext(AthleteContext);
   const [loading, setLoading] = useState(false);
   const [currentUrl] = useState(window.location.href);
-
+  console.log(process.env.NODE_ENV);
   useEffect(() => {
     if (isGetTokens) {
       console.log("isGetTokens is true so will getLoggedInAthlete");
@@ -53,7 +54,7 @@ function App() {
   }, [isGetTokens, setActivities]);
 
   useEffect(() => {
-    if (currentUrl.slice(0, 35) === "http://localhost:3000/?state=&code=") {
+    if (currentUrl.slice(0, 35) === `${appUrl}/?state=&code=`) {
       console.log("url changed so will run getTokens command");
       async function fetchData() {
         await getTokens();
