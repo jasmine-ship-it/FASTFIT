@@ -63,7 +63,7 @@ function App() {
       setIsGetTokens(true);
     }
     console.log(`isGetTokens is ${isGetTokens}`);
-  }, [currentUrl]);
+  }, [currentUrl, isGetTokens, setIsGetTokens]);
 
   if (loading) {
     return <Loading />;
