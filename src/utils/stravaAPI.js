@@ -17,7 +17,8 @@ export const redirectStravaAuth = async () => {
 
 export const getTokens = async () => {
   const updatedUrl = window.location.href;
-  let authCode = updatedUrl.slice(35, 75);
+  const params = new URLSearchParams(updatedUrl);
+  const authCode = params.get("code");
   console.log(`authcode is ${authCode}`);
   console.log(`updatedUrl is ${updatedUrl}`);
 
