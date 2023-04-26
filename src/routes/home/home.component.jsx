@@ -54,7 +54,9 @@ function App() {
   }, [isGetTokens, setActivities]);
 
   useEffect(() => {
-    if (currentUrl.slice(0, 35) === `${appUrl}/?state=&code=`) {
+    const params = new URLSearchParams(currentUrl);
+    const urlParamsExists = params.get("code") && params.get("state");
+    if (urlParamsExists) {
       console.log("url changed so will run getTokens command");
       async function fetchData() {
         await getTokens();
