@@ -15,7 +15,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 
-const pages = ["Home", "Activities"];
+const pages = ["Activities"];
 const settings = ["Profile", "Account", "Dashboard", "Logout", "settings"];
 
 export const ResponsiveAppBar = () => {
@@ -122,7 +122,7 @@ export const ResponsiveAppBar = () => {
                 textDecoration: "none",
               }}
             >
-              LOGO
+              RUNSAM
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
