@@ -23,7 +23,7 @@ function App() {
   const { setAthleteData } = useContext(AthleteContext);
   const [loading, setLoading] = useState(false);
   const [currentUrl] = useState(window.location.href);
-
+  console.log(process.env.NODE_ENV);
   useEffect(() => {
     if (isGetTokens) {
       console.log("isGetTokens is true so will getLoggedInAthlete");
@@ -53,7 +53,9 @@ function App() {
   }, [isGetTokens, setActivities]);
 
   useEffect(() => {
-    if (currentUrl.slice(0, 35) === "http://localhost:3000/?state=&code=") {
+    const params = new URLSearchParams(currentUrl);
+    const urlParamsExists = params.get("code") && params.get("state");
+    if (urlParamsExists) {
       console.log("url changed so will run getTokens command");
       async function fetchData() {
         await getTokens();

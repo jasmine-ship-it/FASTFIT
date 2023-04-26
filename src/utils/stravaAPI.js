@@ -2,12 +2,16 @@ import axios from "axios";
 
 const scope = "read_all";
 const redirect_uri = "http://localhost:3000";
+export const appUrl =
+  process.env.NODE_ENV === "development"
+    ? redirect_uri
+    : process.env.REACT_APP_URL;
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
 export const redirectStravaAuth = async () => {
   window.location.assign(
-    `https://www.strava.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirect_uri}&response_type=code&scope=activity:${scope}`
+    `https://www.strava.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${appUrl}&response_type=code&scope=activity:${scope}`
   );
 };
 
