@@ -125,8 +125,8 @@ export const ResponsiveAppBar = () => {
               RUNSAM
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Link to={`${page.replace('"', "")}`}>
+              {pages.map((page, index) => (
+                <Link key={index} to={`${page.replace('"', "")}`}>
                   <Button
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -160,8 +160,8 @@ export const ResponsiveAppBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <Link to={`${setting.replace('"', "")}`}>
+                {settings.map((setting, index) => (
+                  <Link key={index} to={`${setting.replace('"', "")}`}>
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
