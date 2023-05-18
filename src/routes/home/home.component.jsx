@@ -22,7 +22,7 @@ function App() {
   const { isGetTokens, setIsGetTokens } = useContext(TokensContext);
   const { setAthleteData } = useContext(AthleteContext);
   const [loading, setLoading] = useState(false);
-  const [currentUrl] = useState(window.location.href);
+  const [currentUrl, setCurrentUrl] = useState(window.location.href);
 
   useEffect(() => {
     if (isGetTokens) {
@@ -54,19 +54,20 @@ function App() {
 
   useEffect(() => {
     console.log("gonna do URLsearch Params");
+    setCurrentUrl(window.location.href);
     const params = new URLSearchParams(currentUrl);
     const urlParamsExists = params.get("code");
     const code = params.get("code");
     console.log(`code is ${code}`);
     console.log(`urlParamsExists is ${urlParamsExists}`);
-    if (urlParamsExists) {
+    if (urlParamsExists && isGetTokens === false) {
       console.log("url changed so will run getTokens command");
       async function fetchData() {
         await getTokens();
         console.log(`done with getTokens() call`);
+        setIsGetTokens(true);
       }
       fetchData();
-      setIsGetTokens(true);
     }
     console.log(`isGetTokens is ${isGetTokens}`);
   }, [currentUrl, isGetTokens, setIsGetTokens]);
