@@ -16,7 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 
 const pages = ["Activities"];
-const settings = ["Profile", "Account", "Dashboard", "Logout", "settings"];
+const settings = ["Profile", "Account", "Dashboard", "Logout", "Settings"];
 
 export const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -41,7 +41,14 @@ export const ResponsiveAppBar = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        style={{
+          backgroundColor: "transparent",
+          color: "black",
+          boxShadow: "none",
+        }}
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <DirectionsRunIcon
@@ -58,12 +65,10 @@ export const ResponsiveAppBar = () => {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: "black",
                 textDecoration: "none",
               }}
-            >
-              RUNSAM
-            </Typography>
+            ></Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
@@ -94,6 +99,9 @@ export const ResponsiveAppBar = () => {
                   display: { xs: "block", md: "none" },
                 }}
               >
+                <Link to={``}>
+                  <Typography textAlign="center">Home</Typography>
+                </Link>
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Link to={`${page.replace('"', "")}`}>
@@ -118,12 +126,10 @@ export const ResponsiveAppBar = () => {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: "black",
                 textDecoration: "none",
               }}
-            >
-              RUNSAM
-            </Typography>
+            ></Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page, index) => (
                 <Link key={index} to={`${page.replace('"', "")}`}>

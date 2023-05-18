@@ -59,7 +59,9 @@ const Activities = () => {
                   <TableCell component="th" scope="row">
                     {(distance / 1000).toFixed(1)}km
                   </TableCell>
-                  <TableCell align="right">{elapsedTime}</TableCell>
+                  <TableCell align="right">
+                    {(elapsedTime / 60).toFixed(1)}
+                  </TableCell>
                   <TableCell align="right">
                     {averageSpeed_min}:{averageSpeed_sec}
                   </TableCell>
