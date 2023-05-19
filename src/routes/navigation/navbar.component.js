@@ -104,7 +104,10 @@ export const ResponsiveAppBar = () => {
                 </Link>
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Link to={`${page.replace('"', "")}`}>
+                    <Link
+                      to={`${page.replace('"', "")}`}
+                      style={{ textDecoration: "none" }}
+                    >
                       <Typography textAlign="center">{page}</Typography>
                     </Link>
                   </MenuItem>
@@ -127,7 +130,6 @@ export const ResponsiveAppBar = () => {
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "black",
-                textDecoration: "none",
               }}
             ></Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -136,7 +138,11 @@ export const ResponsiveAppBar = () => {
                   <Button
                     key={page}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "white", display: "block" }}
+                    sx={{
+                      my: 2,
+                      color: "black",
+                      display: "block",
+                    }}
                   >
                     {page}
                   </Button>
@@ -169,7 +175,9 @@ export const ResponsiveAppBar = () => {
                 {settings.map((setting, index) => (
                   <Link key={index} to={`${setting.replace('"', "")}`}>
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                      <Typography textAlign="center" sx={{ color: "black" }}>
+                        {setting}
+                      </Typography>
                     </MenuItem>
                   </Link>
                 ))}
