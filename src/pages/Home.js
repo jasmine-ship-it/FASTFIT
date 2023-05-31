@@ -14,7 +14,8 @@ const Home = () => {
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           height: "100vh",
-          width: "100vw",
+          backgroundPosition: "center",
+          // width: "100vw",
         }}
       />
 
