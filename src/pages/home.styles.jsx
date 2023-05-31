@@ -10,4 +10,5 @@ export const HomeContainer = styled.div`
   height: auto;
   margin-bottom: 50vh;
   padding: 10px;
+  aligncontent: center;
 `;
