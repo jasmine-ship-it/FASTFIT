@@ -8,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
+// import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -16,7 +17,7 @@ import MenuItem from "@mui/material/MenuItem";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 
 const pages = ["Activities"];
-const settings = ["Profile", "Account", "Dashboard", "Logout", "Settings"];
+const settings = ["profile", "login", "logout", "settings"];
 
 export const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -80,6 +81,7 @@ export const ResponsiveAppBar = () => {
                 color="inherit"
               >
                 <MenuIcon />
+                {/* if menu is open, change icon to close... transition "siwngers" */}
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -175,7 +177,10 @@ export const ResponsiveAppBar = () => {
                 {settings.map((setting, index) => (
                   <Link key={index} to={`${setting.replace('"', "")}`}>
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" sx={{ color: "black" }}>
+                      <Typography
+                        textAlign="center"
+                        sx={{ color: "black", textTransform: "capitalize" }}
+                      >
                         {setting}
                       </Typography>
                     </MenuItem>
