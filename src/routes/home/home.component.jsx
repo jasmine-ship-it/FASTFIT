@@ -17,6 +17,7 @@ import Home from "./../../pages/Home";
 import Settings from "./../../pages/Settings";
 import ResponsiveAppBar from "./../navigation/navbar.component";
 import LogIn from "../log-in/log-in.component";
+import Register from "../Register/register.component";
 
 function App() {
   const { setActivities } = useContext(ActivitiesContext);
@@ -84,6 +85,7 @@ function App() {
           <Route path="activities" element={<Activities />} />
           <Route path="settings" element={<Settings />} />
           <Route path="login" element={<LogIn />} />
+          <Route path="register" element={<Register />} />
         </Route>
       </Routes>
     </>
