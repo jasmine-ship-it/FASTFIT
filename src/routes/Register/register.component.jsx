@@ -21,6 +21,7 @@ export default function Register() {
         email,
         password
       );
+      console.log(userCredential);
     } catch (e) {
       console.log(`error is ${e}`);
     }
