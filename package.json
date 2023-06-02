@@ -23,9 +23,9 @@
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.4"
   },
-  "engines" : { 
-    "npm" : "9.5.1",
-    "node" : "18.16.0"
+  "engines": {
+    "npm": "9.5.1",
+    "node": "18.16.0"
   },
   "scripts": {
     "start": "react-scripts start",
