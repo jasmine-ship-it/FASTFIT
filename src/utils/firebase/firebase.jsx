@@ -4,7 +4,10 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
+
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
 const localFirebaseConfig = {
   apiKey: "AIzaSyBedam9rbLHcStoBmfw0I1ftbOfpHXOViY",
@@ -38,6 +41,7 @@ const localFirebaseConfig = {
 //     : deployFirebaseConfig;
 
 const firebaseApp = initializeApp(localFirebaseConfig);
+export const db = getFirestore(firebaseApp);
 
 export const auth = getAuth(firebaseApp);
 
@@ -47,4 +51,33 @@ export const RegisterUserWithEmailAndPassword = async (email, password) => {
 
 export const LogInWithEmailAndPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const SignOutUser = async (auth) => signOut(auth);
+
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  additionalInformation = {}
+) => {
+  if (!userAuth) return;
+  const userDocRef = doc(db, "users", userAuth.uid);
+  const userSnapshot = await getDoc(userDocRef);
+
+  if (!userSnapshot.exists()) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email,
+        createdAt,
+        ...additionalInformation,
+      });
+    } catch (error) {
+      console.log("error creating the user", error.message);
+    }
+  }
+
+  return userDocRef;
 };

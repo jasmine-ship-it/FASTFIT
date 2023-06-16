@@ -7,7 +7,10 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { LogInWithEmailAndPassword } from "../../utils/firebase/firebase";
+import {
+  LogInWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase/firebase";
 
 export default function LogIn() {
   const handleSubmit = async (event) => {
@@ -15,18 +18,11 @@ export default function LogIn() {
     const data = new FormData(event.currentTarget);
     const email = data.get("email");
     const password = data.get("password");
-    // const email = JSON.stringify(data.get("email"));
-    // const password = JSON.stringify(data.get("password"));
-    console.log(`email is ${email}`);
-    console.log(`password is ${password}`);
+
     try {
-      const userCredential = await LogInWithEmailAndPassword(email, password);
-      console.log(userCredential);
-    } catch (e) {
-      console.log(
-        `error code is ${e.code} and error message is error code is ${e.message}`
-      );
-    }
+      const { user } = await LogInWithEmailAndPassword(email, password);
+      createUserDocumentFromAuth(user);
+    } catch (e) {}
   };
 
   return (
